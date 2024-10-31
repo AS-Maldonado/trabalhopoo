@@ -2,12 +2,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 import Entities.Imovel;
+import Entities.Usuario;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
 		List<Imovel> imoveisCadastrados = new ArrayList<>();
+		List<Usuario> usuariosCadastrados = new ArrayList<>();
 		Scanner scanner = new Scanner(System.in);
 		
 		int userAutentication = 0;
@@ -58,23 +60,22 @@ public class Main {
 			System.out.println("--------------------\n");
 			
 			System.out.println("1- Buscar Imovel");
-			System.out.println("2- Detalhes do Imovel");
 			
 			if(userAutentication > 1) {
-				System.out.println("3- Reservar Imovel");	
+				System.out.println("2- Reservar Imovel");	
 			}
 			
 			if(userAutentication > 2) {
-				System.out.println("4- Buscar Usuario");
-				System.out.println("5- Cadastrar Usuario");
-				System.out.println("6- Editar Usuario");
-				System.out.println("7- Cadastrar Imovel");
-				System.out.println("8- Editar Imovel");	
+				System.out.println("3- Buscar Usuario");
+				System.out.println("4- Cadastrar Usuario");
+				System.out.println("5- Editar Usuario");
+				System.out.println("6- Cadastrar Imovel");
+				System.out.println("7- Editar Imovel");	
 			}
 			
 			if(userAutentication == 4) {
 				//OPCIONAL
-				System.out.println("9- Gerir Anuncio");
+				System.out.println("8- Gerir Anuncio");
 			}
 
 			System.out.println("--------------------\n");
@@ -85,13 +86,12 @@ public class Main {
 			
 			switch(userOption) {
 			case 1:
-				// A BUSCA PODE SER FEITA ATRAVÉS DE UMA BUSCA POR STRING, DIGITANDO O ENDEREÇO DO IMOVEL E ENTÃO COMPARANDO COM OS QUE ESTÃO NA LISTA
-				// DEVE SER RETORNADO O IMOVEL
+				// A BUSCA PODE SER FEITA MOSTRANDO UMA LISTA COM AS OPÇÕES E O USUÁRIO ESCOLHE QUAL ELE QUER VISUALIZAR
+				// O METODO DEVE SER IMPLEMENTADO PENSANDO QUE ELE VAI RETORNAR O IMÓVEL, NÃO MOSTRAR OS PRINTS
+				// OS PRINTS SERÃO CONSTRUIDOS NA MAIN
+				// É MAIS FÁCIL FAZER ASSIM PARA QUE OUTROS MÉTODOS POSSAM USAR O RETORNO DESSA BUSCA
 				break;
-			case 2: 
-				//UM IMOVEL DEVE SER ENCONTRADO NA LISTA PRIMEIRO, PARA DEPOIS O MÉTODO DENTRO DESSE OBJETO SER CHAMADO
-				break;
-			case 3:
+			case 2:
 				if(userAutentication > 1) {
 					//DEVE SER CRIADA UMA NOVA RESERVA COM ESSE IMOVEL CASO ELE ESTEJA DISPONIVEL NA DATA DIGITADA
 					// O IMOVEL DEVE SER BUSCADO ANTES DE VALIDAR A DISPONIBILIDADE
@@ -101,9 +101,18 @@ public class Main {
 					userOption = 0;
 				}
 				break;
+			case 3:
+				if(userAutentication > 2) {
+					//BUSCA PARECIDA COM A DO IMÓVEL, MAS PARA USUÁRIO
+				} else {
+					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
+					userOption = 0;
+				}
+				break;
 			case 4:
 				if(userAutentication > 2) {
-					//BUSCAR USUARIO
+					//O USUÁRIO DEVE SER CRIADO COM UMA DAS OPÇÕES DE LOGIN
+					// USAMOS O POLIMORFISMO PARA ADICIONA-LOS À LISTA NA MAIN
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -111,7 +120,7 @@ public class Main {
 				break;
 			case 5:
 				if(userAutentication > 2) {
-					//CADASTRAR USUARIO
+					//POSSIBILITAR EDICAO DE USUARIO
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -119,7 +128,7 @@ public class Main {
 				break;
 			case 6:
 				if(userAutentication > 2) {
-					//POSSIBILITAR EDICAO DE USUARIO
+					//CADASTRAR IMOVEL
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -127,21 +136,13 @@ public class Main {
 				break;
 			case 7:
 				if(userAutentication > 2) {
-					//CADASTRAR IMOVEL
-				} else {
-					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
-					userOption = 0;
-				}
-				break;
-			case 8:
-				if(userAutentication > 2) {
 					//EDITAR IMOVEL
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
 				}
 				break;
-			case 9:
+			case 8:
 				if(userAutentication == 4) {
 					//NÃO SEI OQ FAZER AQUI KKKK
 					// TALVEZ COLOCAR UMA LISTA DE ANUNCIOS COM ALGUNS ANUNCIOS PRE-PRONTOS PARA O PROFESSOR PODER MEXER SE QUISER
