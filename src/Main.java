@@ -65,14 +65,16 @@ public class Main {
 			}
 			
 			if(userAutentication > 2) {
-				System.out.println("4- Cadastrar Usuario");
-				System.out.println("5- Editar Usuario");
-				System.out.println("6- Cadastrar Imovel");
-				System.out.println("7- Editar Imovel");
+				System.out.println("4- Buscar Usuario");
+				System.out.println("5- Cadastrar Usuario");
+				System.out.println("6- Editar Usuario");
+				System.out.println("7- Cadastrar Imovel");
+				System.out.println("8- Editar Imovel");	
 			}
 			
 			if(userAutentication == 4) {
-				System.out.println("8- Gerir Anuncio");	
+				//OPCIONAL
+				System.out.println("9- Gerir Anuncio");
 			}
 
 			System.out.println("--------------------\n");
@@ -101,7 +103,7 @@ public class Main {
 				break;
 			case 4:
 				if(userAutentication > 2) {
-					//UM NOVO USUARIO DEVE SER CADASTRADO
+					//BUSCAR USUARIO
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -109,7 +111,7 @@ public class Main {
 				break;
 			case 5:
 				if(userAutentication > 2) {
-					//UM NOVO IMOVEL DEVE SER CADASTRADO
+					//CADASTRAR USUARIO
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -117,7 +119,7 @@ public class Main {
 				break;
 			case 6:
 				if(userAutentication > 2) {
-					//POSSIBILITAR EDICAO DE IMOVEL
+					//POSSIBILITAR EDICAO DE USUARIO
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -125,13 +127,21 @@ public class Main {
 				break;
 			case 7:
 				if(userAutentication > 2) {
-					//POSSIBILITAR EDICAO DE USUARIO
+					//CADASTRAR IMOVEL
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
 				}
 				break;
 			case 8:
+				if(userAutentication > 2) {
+					//EDITAR IMOVEL
+				} else {
+					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
+					userOption = 0;
+				}
+				break;
+			case 9:
 				if(userAutentication == 4) {
 					//NÃO SEI OQ FAZER AQUI KKKK
 					// TALVEZ COLOCAR UMA LISTA DE ANUNCIOS COM ALGUNS ANUNCIOS PRE-PRONTOS PARA O PROFESSOR PODER MEXER SE QUISER
