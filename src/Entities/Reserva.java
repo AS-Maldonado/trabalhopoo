@@ -43,6 +43,14 @@ public class Reserva {
 	public void setDataInicio(Date dataInicio) {
 		this.dataInicio = dataInicio;
 	}
+	
+	public Date getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
+	}
 
 	public float getValorTotal() {
 		return valorTotal;

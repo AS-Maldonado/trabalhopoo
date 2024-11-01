@@ -121,7 +121,21 @@ public class Imovel {
 	}
 	
 	public void DetalharImovel() {
-		//TODO
+		System.out.println("TIPO: " + this.tipo);
+		System.out.println("AREA: " + this.area);
+		System.out.println("ENDERECO: " + this.endereco);
+		System.out.println("VALOR DA DIARIA: " + this.valor_diaria);
+		System.out.println("VALOR SEMANAL: " + this.valor_semanal);
+		System.out.println("VALOR MENSAL: " + this.valor_mensal);
+		System.out.println("QUANTIDADE DE QUARTOS: " + this.qtd_quartos);
+		System.out.println("QUANTIDADE DE BANHEIROS: " + this.qtd_banheiros);
+		System.out.println("DESCRICAO: " + this.descricao);
+		System.out.print("DATAS RESERVADAS: [");
+		
+		for(int i=0; i<this.datas_disponibilidade.size(); i++) {
+			System.out.print(this.datas_disponibilidade.get(i));
+			System.out.println("]\n");
+		}
 	}
 	
 	public void VerificarDisponibilidade(Date date) {

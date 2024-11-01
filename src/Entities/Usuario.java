@@ -7,7 +7,6 @@ public abstract class Usuario {
 	private int senha;
 	
 	public Usuario(String nome, String email, String telefone, int senha) {
-		/* OS DADOS PRECISAM SER VALIDADOS NO CONSTRUTOR, OU ENTÃO CRIAR UM METODO PARA ISSO*/
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
@@ -45,6 +44,12 @@ public abstract class Usuario {
 
 	public void setSenha(int senha) {
 		this.senha = senha;
+	}
+	
+	public void DetalharUsuario() {
+		System.out.println("NOME: " + this.nome);
+		System.out.println("EMAIL: " + this.email);
+		System.out.println("TELEFONE: " + this.telefone);
 	}
 	
 	public void Registrar() {

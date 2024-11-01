@@ -3,6 +3,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import Entities.Imovel;
 import Entities.Usuario;
+import Services.ImovelService;
+import Services.UserService;
 
 public class Main {
 
@@ -50,10 +52,6 @@ public class Main {
 		
 		int userOption = 0;
 		
-		//OUTROS MÉTODOS PODEM SER ADICIONADOS AO MENU, COMO EDITAR USUÁRIO, EDITAR IMOVEL, ETC
-		// PARA FACILITAR O MANUSEIO DOS USUÁRIOS E IMÓVEIS PODE SER ADICIONADO UMA PROPRIEDADE ID PARA AMBOS
-		// SENÃO, A BUSCA DELES DEVERÁ SER REALIZADA PELO NOME DO USUÁRIO OU ENDEREÇO DO IMÓVEL
-		
 		while(userOption == 0) {
 			System.out.println("--------------------");
 			System.out.println("        MENU        ");
@@ -62,15 +60,15 @@ public class Main {
 			System.out.println("1- Buscar Imovel");
 			
 			if(userAutentication > 1) {
-				System.out.println("2- Reservar Imovel");	
+				System.out.println("2- Reservar Imovel");	//LEMBRAR DE VALIDAR OS DADOS SE NECESSARIO
 			}
 			
 			if(userAutentication > 2) {
 				System.out.println("3- Buscar Usuario");
-				System.out.println("4- Cadastrar Usuario");
-				System.out.println("5- Editar Usuario");
-				System.out.println("6- Cadastrar Imovel");
-				System.out.println("7- Editar Imovel");	
+				System.out.println("4- Cadastrar Usuario");	//LEMBRAR DE VALIDAR OS DADOS SE NECESSARIO
+				System.out.println("5- Editar Usuario");  	//LEMBRAR DE VALIDAR OS DADOS SE NECESSARIO
+				System.out.println("6- Cadastrar Imovel");  //LEMBRAR DE VALIDAR OS DADOS SE NECESSARIO
+				System.out.println("7- Editar Imovel");	  	//LEMBRAR DE VALIDAR OS DADOS SE NECESSARIO
 			}
 			
 			if(userAutentication == 4) {
@@ -82,14 +80,35 @@ public class Main {
 			System.out.print("RESPOSTA: ");
 			userOption = scanner.nextInt();
 			
-			//PARA FACILITA
-			
 			switch(userOption) {
 			case 1:
-				// A BUSCA PODE SER FEITA MOSTRANDO UMA LISTA COM AS OPÇÕES E O USUÁRIO ESCOLHE QUAL ELE QUER VISUALIZAR
-				// O METODO DEVE SER IMPLEMENTADO PENSANDO QUE ELE VAI RETORNAR O IMÓVEL, NÃO MOSTRAR OS PRINTS
-				// OS PRINTS SERÃO CONSTRUIDOS NA MAIN
-				// É MAIS FÁCIL FAZER ASSIM PARA QUE OUTROS MÉTODOS POSSAM USAR O RETORNO DESSA BUSCA
+				int escolhaImovel;
+				
+				if(imoveisCadastrados.isEmpty()) {
+					System.out.println("A LISTA DE IMOVEIS ESTA VAZIA...");
+					userOption = 0;
+					break;
+				}
+				
+				for(int i=0; i<imoveisCadastrados.size(); i++) {
+					System.out.println((i + 1) + "- " + imoveisCadastrados.get(i).getEndereco());
+				}
+				
+				try {
+					System.out.print("\nESCOLHA UM IMOVEL PARA OBTER MAIS DETALHES: ");
+					escolhaImovel = scanner.nextInt();
+					
+					String endereco = imoveisCadastrados.get(escolhaImovel-1).getEndereco();
+					
+					Imovel imovelRetornado = ImovelService.BuscarImovel(endereco, imoveisCadastrados);
+					imovelRetornado.DetalharImovel();
+					
+				} catch(NumberFormatException e) {
+					
+					System.out.println("Erro: Digite um numero valido...");
+				}
+				
+				userOption = 0;
 				break;
 			case 2:
 				if(userAutentication > 1) {
@@ -103,7 +122,33 @@ public class Main {
 				break;
 			case 3:
 				if(userAutentication > 2) {
-					//BUSCA PARECIDA COM A DO IMÓVEL, MAS PARA USUÁRIO
+					int escolhaUsuario;
+					
+					if(usuariosCadastrados.isEmpty()) {
+						System.out.println("A LISTA DE USUARIOS	 ESTA VAZIA...");
+						userOption = 0;
+						break;
+					}
+					
+					for(int i=0; i<usuariosCadastrados.size(); i++) {
+						System.out.println((i + 1) + "- " + usuariosCadastrados.get(i).getNome());
+					}
+					
+					try {
+						System.out.print("\nESCOLHA UM IMOVEL PARA OBTER MAIS DETALHES: ");
+						escolhaUsuario = scanner.nextInt();
+						
+						String nome = usuariosCadastrados.get(escolhaUsuario-1).getNome();
+						
+						Usuario usuarioRetornado = UserService.BuscarUsuario(nome, usuariosCadastrados);
+						usuarioRetornado.DetalharUsuario();
+						
+					} catch(NumberFormatException e) {
+						System.out.println("Erro: Digite um numero valido...");
+					}
+					
+					userOption = 0;
+					break;
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -112,7 +157,8 @@ public class Main {
 			case 4:
 				if(userAutentication > 2) {
 					//O USUÁRIO DEVE SER CRIADO COM UMA DAS OPÇÕES DE LOGIN
-					// USAMOS O POLIMORFISMO PARA ADICIONA-LOS À LISTA NA MAIN
+					//USAMOS O POLIMORFISMO PARA ADICIONA-LOS À LISTA NA MAIN
+					//LEMBRAR DE VALIDAR OS DADOS
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -121,6 +167,7 @@ public class Main {
 			case 5:
 				if(userAutentication > 2) {
 					//POSSIBILITAR EDICAO DE USUARIO
+					//LEMBRAR DE VALIDAR OS DADOS
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -129,6 +176,7 @@ public class Main {
 			case 6:
 				if(userAutentication > 2) {
 					//CADASTRAR IMOVEL
+					//LEMBRAR DE VALIDAR OS DADOS
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -137,6 +185,7 @@ public class Main {
 			case 7:
 				if(userAutentication > 2) {
 					//EDITAR IMOVEL
+					//LEMBRAR DE VALIDAR OS DADOS
 				} else {
 					System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
 					userOption = 0;
@@ -158,6 +207,7 @@ public class Main {
 				break;
 			}
 		}
+		
+		scanner.close();
 	}
-
 }
