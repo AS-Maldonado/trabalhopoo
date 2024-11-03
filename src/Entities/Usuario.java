@@ -11,7 +11,6 @@ public abstract class Usuario {
 		this.email = email;
 		this.telefone = telefone;
 		this.senha = senha;
-		Registrar();
 	}
 
 	public String getNome() {
@@ -50,18 +49,5 @@ public abstract class Usuario {
 		System.out.println("NOME: " + this.nome);
 		System.out.println("EMAIL: " + this.email);
 		System.out.println("TELEFONE: " + this.telefone);
-	}
-	
-	public void Registrar() {
-		/* ACHO QUE O IDEAL É COLOCAR ESSES DADOS EM UM ARQUIVO SÓ PRA SIMULAR UM BANCO DE DADOS
-		 * AÍ A GNT PODE PEGAR OS DADOS PELO MENU, CRIAR O OBJETO COM O CONSTRUTOR NORMAL
-		 * E AÍ CHAMAR ESSE MÉTODO SÓ PRA ADICIONAR OS DADOS NO ARQUIVO
-		 */
-		
-		System.out.println("USUÁRIO REGISTRADO COM SUCESSO!");
-	}
-	
-	public void EditarRegistro() {
-		System.out.println("REGISTRO EDITADO COM SUCESSO!");
 	}
 }

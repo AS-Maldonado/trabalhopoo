@@ -28,22 +28,4 @@ public class Cliente extends Usuario {
 	public void setHistoricoReservas(List<Reserva> historicoReservas) {
 		this.historicoReservas = historicoReservas;
 	}
-	
-	public void BuscarImovel() {
-		//TODO
-	}
-	
-	public String ReservarImovel() {
-		//TODO
-		return "";
-	}
-	
-	public String CancelarReserva() {
-		//TODO
-		return "";
-	}
-	
-	public void AdicionarFavoritos() {
-		//TODO
-	}
 }

@@ -28,10 +28,4 @@ public class Administrador extends Usuario {
 	public void setHistoricoReservas(List<Reserva> historicoReservas) {
 		this.historicoReservas = historicoReservas;
 	}
-	
-	public void GerenciarUsuarios() {
-		//TODO
-	}
-	
-	
 }

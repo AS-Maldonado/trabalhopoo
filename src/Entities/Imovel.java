@@ -139,13 +139,20 @@ public class Imovel {
 	}
 	
 	public void VerificarDisponibilidade(Date date) {
-		/*VERIFICA SE A DATA PASSADA ESTA NA LISTA DE DATAS
-		  SE NÃO ESTIVER ENTÃO ESTÁ DISPONÍVEL
-		*/
+	    if (this.datas_disponibilidade.contains(date)) {
+	        System.out.println("O imóvel não está disponível na data: " + date);
+	    } else {
+	        System.out.println("O imóvel está disponível na data: " + date);
+	    }
 	}
-	
+
 	public void AtualizarDisponibilidade(Date date) {
-		//REMOVE A DATA PASSADA COMO PARAMETRO DA LISTA DE DATAS
+	    if (this.datas_disponibilidade.contains(date)) {
+	        this.datas_disponibilidade.remove(date);
+	        System.out.println("A data " + date + " foi removida das datas de indisponibilidade.");
+	    } else {
+	        System.out.println("A data " + date + " não está nas datas de indisponibilidade.");
+	    }
 	}
 	
 }

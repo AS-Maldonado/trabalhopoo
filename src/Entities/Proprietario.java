@@ -17,16 +17,4 @@ public class Proprietario extends Usuario {
 	public void setListaImovel(List<Imovel> listaImovel) {
 		this.listaImovel = listaImovel;
 	}
-	
-	public void CadastrarImovel() {
-		//TODO
-	}
-	
-	public void EditarImovel(Imovel imovel) {
-		//TODO
-	}
-	
-	public void ExcluirImovel(Imovel imovel) {
-		//TODO
-	}
 }
