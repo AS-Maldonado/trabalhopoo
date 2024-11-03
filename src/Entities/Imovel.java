@@ -11,12 +11,12 @@ public class Imovel {
 	private float valor_diaria;
 	private float valor_semanal;
 	private float valor_mensal;
-	private List<Date> datas_disponibilidade;
+	private List<Date> datas_reservadas;
 	private String descricao;
 	private List<String> fotos; //GUARDA OS CAMINHOS PARA AS IMAGENS
 	
 	public Imovel(String tipo, float area, String endereco, int qtd_quartos, int qtd_banheiros, float valor_diaria,
-			float valor_semanal, float valor_mensal, List<Date> datas_disponibilidade, String descricao,
+			float valor_semanal, float valor_mensal, List<Date> datas_reservadas, String descricao,
 			List<String> fotos) {
 
 		this.tipo = tipo;
@@ -27,7 +27,7 @@ public class Imovel {
 		this.valor_diaria = valor_diaria;
 		this.valor_semanal = valor_semanal;
 		this.valor_mensal = valor_mensal;
-		this.datas_disponibilidade = datas_disponibilidade;
+		this.datas_reservadas = datas_reservadas;
 		this.descricao = descricao;
 		this.fotos = fotos;
 	}
@@ -97,11 +97,11 @@ public class Imovel {
 	}
 
 	public List<Date> getDatas_disponibilidade() {
-		return datas_disponibilidade;
+		return datas_reservadas;
 	}
 
-	public void setDatas_disponibilidade(List<Date> datas_disponibilidade) {
-		this.datas_disponibilidade = datas_disponibilidade;
+	public void setDatas_reservadas(List<Date> datas_reservadas) {
+		this.datas_reservadas = datas_reservadas;
 	}
 
 	public String getDescricao() {
@@ -132,14 +132,14 @@ public class Imovel {
 		System.out.println("DESCRICAO: " + this.descricao);
 		System.out.print("DATAS RESERVADAS: [");
 		
-		for(int i=0; i<this.datas_disponibilidade.size(); i++) {
-			System.out.print(this.datas_disponibilidade.get(i));
+		for(int i=0; i<this.datas_reservadas.size(); i++) {
+			System.out.print(this.datas_reservadas.get(i));
 			System.out.println("]\n");
 		}
 	}
 	
 	public void VerificarDisponibilidade(Date date) {
-	    if (this.datas_disponibilidade.contains(date)) {
+	    if (this.datas_reservadas.contains(date)) {
 	        System.out.println("O imóvel não está disponível na data: " + date);
 	    } else {
 	        System.out.println("O imóvel está disponível na data: " + date);
@@ -147,8 +147,8 @@ public class Imovel {
 	}
 
 	public void AtualizarDisponibilidade(Date date) {
-	    if (this.datas_disponibilidade.contains(date)) {
-	        this.datas_disponibilidade.remove(date);
+	    if (this.datas_reservadas.contains(date)) {
+	        this.datas_reservadas.remove(date);
 	        System.out.println("A data " + date + " foi removida das datas de indisponibilidade.");
 	    } else {
 	        System.out.println("A data " + date + " não está nas datas de indisponibilidade.");
