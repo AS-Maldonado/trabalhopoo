@@ -100,8 +100,9 @@ public class Imovel {
 		return datas_reservadas;
 	}
 
-	public void setDatas_reservadas(List<Date> datas_reservadas) {
-		this.datas_reservadas = datas_reservadas;
+	public void setDatas_reservadas(Date data_inicio, Date data_fim) {
+		this.datas_reservadas.add(data_inicio);
+    this.datas_reservadas.add(data_fim);
 	}
 
 	public String getDescricao() {

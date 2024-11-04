@@ -134,22 +134,38 @@ public class Main {
             // AS DATAS ENTRE O dataInicio E dataFim DA RESERVA DEVEM SER ADICIONADAS A LISTA DE DATAS INDISPONIVEIS DO IMOVEL
             System.out.println("ESCOLHA O IMÓVEL PARA RESERVAR");
 
-            Imovel imovelRetornado;
+            Imovel imovelRetornado = null;
 
-            escolhaImovel = scanner.nextInt();
-            String endereco = imoveisCadastrados.get(escolhaImovel-1).getEndereco();
-            imovelRetornado = ImovelService.BuscarImovel(endereco, imoveisCadastrados);
-            System.out.println("Erro: Digite um número válido...");
-            scanner.next(); // Limpa a entrada inválida
+            if(imoveisCadastrados.isEmpty()) {
+              System.out.println("A LISTA DE IMOVEIS ESTA VAZIA...");
+              userOption = 0;
+              break;
+            }
+
+            for(int i=0; i<imoveisCadastrados.size(); i++) {
+              System.out.println((i + 1) + "- " + imoveisCadastrados.get(i).getEndereco());
+            }
+
+            try {
+              escolhaImovel = scanner.nextInt();
+
+              String endereco = imoveisCadastrados.get(escolhaImovel-1).getEndereco();
+
+              imovelRetornado = ImovelService.BuscarImovel(endereco, imoveisCadastrados);
+            } catch (Exception e) {
+              System.out.println("Erro: Digite um número válido...");
+            }
+            
 
             // Definindo datas de início e fim
-            Date data_inicio;
-            Date data_fim;
+            Date data_inicio = null;
+            Date data_fim = null;
 
             int success = 0;
             while(success == 0){
               try{
                 System.out.print("Digite a data de início (DD/MM/AAAA): ");
+                scanner.next(); // Limpa a entrada inválida
                 String data = scanner.nextLine();
 
                 // Data de início
@@ -173,8 +189,12 @@ public class Main {
               success = 1;
             }
 
+            // Não usado para nada :(
             Reserva novaReserva = new Reserva(imovelRetornado, data_inicio, data_fim);
-            // TODO ADICIONAR A RESERVA NO IMOVEL
+
+            //Adicionando datas da reserva no imóvel
+            imovelRetornado.setDatas_reservadas(data_inicio, data_fim);
+
           } else {
             System.out.println("OPCAO INVALIDA... POR FAVOR, DIGITE NOVAMENTE!");
           }
